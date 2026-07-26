@@ -1,0 +1,31 @@
+.bg-primary{
+    background:var(--primary-500);
+}
+
+.bg-teal{
+    background:var(--teal-500);
+}
+
+.bg-white{
+    background:#fff;
+}
+
+.text-primary{
+    color:var(--primary-500);
+}
+
+.text-teal{
+    color:var(--teal-500);
+}
+
+.text-muted{
+    color:var(--gray-500);
+}
+
+.shadow-md{
+    box-shadow:var(--shadow-md);
+}
+
+.radius-lg{
+    border-radius:var(--radius-lg);
+}

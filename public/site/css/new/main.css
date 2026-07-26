@@ -1,0 +1,918 @@
+.header-top-bar {
+    background: var(--gray-900);
+    color: #fff;
+    font-size: 14px;
+}
+
+.header-top-inner {
+    min-height: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-top-right,
+.header-top-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.top-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.top-item:hover {
+    color: var(--primary-300);
+    text-decoration: none;
+}
+
+.top-item i {
+    color: var(--primary-400);
+}
+
+.top-social {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    transition: 0.3s;
+}
+
+.top-social:hover {
+    background: var(--primary-500);
+    color: #fff;
+}
+/* Layout Grid */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr;
+    gap: 30px;
+    align-items: center;
+}
+.hero-section {
+    position: relative;
+    padding: 40px 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(22,151,246,0.18) 0, transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(37,199,186,0.18) 0, transparent 55%),
+        linear-gradient(135deg, var(--primary-50), var(--body));
+}
+
+/* افکت بلور شیشه‌ای برای داخل هیرو (اختیاری، خیلی شیک میشه) */
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-radius: var(--radius-xl);
+    padding: 12px;
+}
+
+/* چند دایره محو تزئینی (در صورت تمایل) */
+.hero-section::before,
+.hero-section::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(22,151,246,0.12);
+    filter: blur(40px);
+    z-index: 0;
+}
+
+.hero-section::before {
+    top: -60px;
+    left: -40px;
+}
+
+.hero-section::after {
+    bottom: -60px;
+    right: -40px;
+}
+
+
+/* Badge Style */
+.hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+.hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-500);
+    border-radius: 50%;
+}
+
+/* Typography */
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+}
+.hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-600);
+}
+.hero-desc {
+    max-width: 550px;
+    line-height: 1.8;
+}
+
+/* Buttons */
+.btn-custom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+.btn-custom.border-primary {
+    border-color: var(--primary-500);
+}
+.btn-custom:hover {
+    transform: translateY(-3px);
+}
+
+/* Image Section & Dot Patterns */
+.hero-media-wrapper {
+    position: relative;
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+.dot-pattern {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: radial-gradient(var(--primary-200) 2px, transparent 2px);
+    background-size: 12px 12px;
+    z-index: -1;
+}
+.dot-pattern.top-left {
+    top: 0;
+    left: 0;
+}
+.dot-pattern.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.hero-image-frame img {
+    width: 100%;
+    display: block;
+}
+
+/* Features Row */
+.features-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    transition: var(--transition);
+}
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 24px;
+}
+
+/* Helper Colors for Icons */
+.bg-primary-light {
+    background: var(--primary-50);
+}
+.bg-teal-light {
+    background: var(--teal-50);
+}
+
+.feature-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-grid,
+    .features-row {
+        grid-template-columns: 1fr;
+    }
+    .hero-content {
+        text-align: center;
+        order: 2;
+    }
+    .hero-media-wrapper {
+        order: 1;
+        min-width: 100%;
+        margin: 0 auto;
+    }
+    .hero-actions {
+        justify-content: center;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+}
+
+/* شبکه کارت‌ها در دسکتاپ */
+.course-types-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* کارت اصلی (به عنوان یک ماژول ری‌یوزیبل) */
+.course-type-card {
+    transition: var(--transition);
+    border: 1px solid var(--gray-100);
+    position: relative;
+}
+.course-type-card::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    opacity: 30%;
+    content: "";
+}
+.course-type-card.online-card:before {
+    background: var(--teal-100);
+}
+.course-type-card.visit-card:before {
+    background: var(--primary-100);
+}
+
+.course-type-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* ساختار داخلی کارت */
+.course-type-card__body {
+    display: grid;
+    grid-template-columns: 1.4fr 1.1fr;
+    height: 100%;
+    align-items: flex-end;
+}
+
+/* تصویر کارت */
+.course-type-card__media {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.course-type-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.course-type-card:hover .course-type-card__img {
+    transform: scale(1.05);
+}
+
+/* بخش محتوا */
+.course-type-card__content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-type-card__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--heading-color);
+    margin: 0 0 4px 0;
+}
+
+.course-type-card__subtitle {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+/* لیست ویژگی‌ها */
+.course-type-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.course-type-card__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* باکس دایره‌ای تیک‌ها */
+.course-type-card__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.course-type-card__icon {
+    width: 14px;
+    height: 14px;
+}
+
+.course-type-card__text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* دکمه اکشن پایین کارت */
+.course-type-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition);
+    width: 100%;
+    text-align: center;
+}
+
+.course-type-card__btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.course-type-card__btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.95);
+}
+
+/* استایل‌های رنگ فرعی برای تیک‌ها */
+.bg-primary-light {
+    background-color: var(--primary-50);
+}
+.bg-teal-light {
+    background-color: var(--teal-50);
+}
+
+/* ==================================
+   ریسپانسیو (موبایل و تبلت)
+================================== */
+
+@media (max-width: 1200px) {
+    .course-type-card__body {
+        grid-template-columns: 1fr; /* تصویر بالا و محتوا پایین می‌آید */
+    }
+    .course-type-card__media {
+        height: 220px; /* تنظیم ارتفاع پیش‌فرض برای تصویر در حالت موبایل */
+    }
+}
+
+@media (max-width: 992px) {
+    .course-types-grid {
+        grid-template-columns: 1fr; /* کارت‌ها زیر هم قرار می‌گیرند */
+        gap: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .course-type-card__content {
+        padding: 20px;
+    }
+    .course-type-card__title {
+        font-size: 1.25rem;
+    }
+    .course-type-card__subtitle {
+        margin-bottom: 16px;
+    }
+}
+
+/* استایل کلی سکشن */
+.popular-courses-section {
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+}
+
+/* تغییر ظاهر کارت در این سکشن خاص */
+.popular-course-item .card-item {
+    height: auto !important; /* حذف ارتفاع ثابت ۲۵ رم */
+    border-radius: 18px !important;
+    padding: 10px;
+}
+
+/* مخفی کردن بخش‌هایی که در تصویر نیستند (مثل مدرس یا امتیاز) */
+.popular-course-item .star-inline,
+.popular-course-item .card-body > h6,
+.popular-course-item .tooltip_templates {
+    display: none !important;
+}
+
+/* تغییر ظاهر تایتل */
+.popular-course-item .card-title {
+    font-size: 1rem;
+    margin: 15px 0;
+    text-align: center;
+}
+
+/* تنظیم جایگاه badgeها */
+.popular-course-item .course-badge-labels {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+/* استایل‌دهی قیمت */
+.popular-course-item .card-price {
+    text-align: center;
+    width: 100%;
+}
+
+/* افکت hover */
+.popular-course-item .card-item:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+
+/* ۱. تنظیم سکشن محبوب‌ترین دوره‌ها */
+.popular-courses-section {
+    padding: 60px 0;
+    background-color: #f8fbff; /* یک رنگ پس‌زمینه بسیار ملایم */
+}
+
+/* ۲. اصلاح ساختار اسلایدر یا گرید برای عرض مناسب */
+.popular-courses-section .course-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* ۳. بازنویسی استایل کارت برای این سکشن خاص */
+.popular-course-item .card-item {
+    height: auto !important; /* حذف ارتفاع ۲۵ رم که قبلاً داشتی */
+    min-height: 380px;
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.3s ease;
+    padding: 20px; /* ایجاد فضای تنفس داخل کارت */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popular-course-item .card-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ۴. استایل بخش تصویر (جای تصویر نام تجاری در عکس شما) */
+.popular-course-item .card-image {
+    width: 100%;
+    height: 160px;
+    background-color: #fcfdfe; /* رنگ پس‌زمینه روشن برای جای تصویر */
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popular-course-item .card-img-top {
+    max-height: 100px;
+    width: auto !important;
+    object-fit: contain;
+}
+
+/* ۵. استایل بدنه کارت و متون */
+.popular-course-item .card-body {
+    padding: 0 !important;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popular-course-item .card-title {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: #0c4a4e !important; /* رنگ سبز تیره مشابه تصویر */
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ۶. تنظیم قیمت‌ها */
+.popular-course-item .card-price {
+    font-size: 1rem !important;
+    color: #0c4a4e !important;
+    margin-bottom: 0 !important;
+}
+
+.popular-course-item .before-price {
+    font-size: 0.85rem !important;
+    color: #a0aec0 !important;
+    text-decoration: line-through;
+}
+
+/* ۷. تنظیم Badgeها (آن‌هایی که بالای کارت در عکس افتاده‌اند) */
+.popular-course-item .course-badge-labels {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    left: 15px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.popular-course-item .course-badge {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    border-radius: 50px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #4a5568 !important;
+    border: 1px solid #edf2f7 !important;
+}
+
+.popular-course-item .course-badge.green {
+    background-color: #e6fffa !important;
+    color: #38b2ac !important;
+    border: none !important;
+}
+
+/* ۸. مخفی کردن المان‌های اضافه که در طرح نیستند */
+.popular-course-item .star-inline,
+.popular-course-item .card-body > h6,
+.popular-course-item .tooltip_templates {
+    display: none !important;
+}
+
+/* اصلاح نمایش در موبایل */
+@media (max-width: 768px) {
+    .popular-courses-section .course-carousel {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}
+
+/* Feedback Section Styles */
+.feedback-section { padding: 60px 0; background: #fff; }
+
+.section-title-box { text-align: center; margin-bottom: 40px; }
+.section-title-box .title { font-size: 24px; font-weight: bold; color: #0f172a; margin-bottom: 10px; }
+.section-title-box .divider { display: block; width: 50px; height: 3px; background: #0c4a4e; margin: 0 auto; }
+
+.feedback-item { 
+    background: #fff; border: 1px solid #f1f5f9; padding: 25px; 
+    border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    height: 100%; display: flex; flex-direction: column;
+}
+.feedback-item .stars { color: #ffc107; margin-bottom: 15px; font-size: 14px; }
+.feedback-item .comment { font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+
+.feedback-item .user-info { display: flex; align-items: center; gap: 10px; }
+.feedback-item .user-info img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.feedback-item .name-role strong { display: block; font-size: 14px; color: #0f172a; }
+.feedback-item .name-role span { font-size: 12px; color: #64748b; }
+/* CTA Section Styles */
+.cta-wrapper {
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); /* طیف آبی حرفه‌ای */
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-bg-shape {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.cta__title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.cta__desc {
+    font-size: 1rem;
+    max-width: 600px;
+}
+
+.btn-cta {
+    color: #1e40af !important;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    background-color: #f8fafc;
+}
+
+.cta-img {
+    max-width: 220px;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2));
+    animation: float 4s ease-in-out infinite;
+}
+
+/* انیمیشن شناور بودن تصویر */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.gap-3 { gap: 1rem; }
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 991px) {
+    .cta__title {
+        font-size: 1.2rem;
+    }
+    .cta-wrapper {
+        border-radius: 20px;
+    }
+}
+.academy-collage-section {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(99, 102, 241, 0.10), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.academy-collage-section::before,
+.academy-collage-section::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    opacity: 0.45;
+}
+
+.academy-collage-section::before {
+    width: 180px;
+    height: 180px;
+    top: 30px;
+    right: -60px;
+    background: rgba(59, 130, 246, 0.08);
+    filter: blur(10px);
+}
+
+.academy-collage-section::after {
+    width: 240px;
+    height: 240px;
+    bottom: -80px;
+    left: -90px;
+    background: rgba(14, 165, 233, 0.08);
+    filter: blur(18px);
+}
+
+.academy-collage-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.academy-collage-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--primary-100);
+    color: var(--primary-600);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.academy-collage-title {
+    font-size: 30px;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.academy-collage-desc {
+    max-width: 680px;
+    margin: 0 auto;
+    color: #64748b;
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+.academy-collage-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 92px;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.academy-collage-item {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border-radius: 28px;
+    background: #e2e8f0;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    border: 6px solid rgba(255, 255, 255, 0.85);
+    transform: translateZ(0);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.academy-collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.academy-collage-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.00) 30%, rgba(15, 23, 42, 0.18) 100%);
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.academy-collage-item::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 18px 0 0 rgba(255, 255, 255, 0.75), 36px 0 0 rgba(255, 255, 255, 0.55);
+    z-index: 2;
+    opacity: 0.9;
+}
+
+.academy-collage-item:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
+}
+
+.academy-collage-item:hover img {
+    transform: scale(1.06);
+}
+
+/* Playful collage layout */
+.collage-item-1 {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 5;
+    transform: rotate(-2deg);
+}
+
+.collage-item-2 {
+    grid-column: 6 / span 4;
+    grid-row: 1 / span 3;
+    transform: rotate(2deg);
+}
+
+.collage-item-3 {
+    grid-column: 10 / span 3;
+    grid-row: 1 / span 4;
+    transform: rotate(-1deg);
+}
+
+.collage-item-4 {
+    grid-column: 6 / span 4;
+    grid-row: 4 / span 3;
+    transform: rotate(-2deg);
+}
+
+.collage-item-5 {
+    grid-column: 1 / span 12;
+    grid-row: 6 / span 2;
+    min-height: 180px;
+    transform: rotate(1deg);
+}
+
+@media (max-width: 991px) {
+    .academy-collage-title {
+        font-size: 24px;
+    }
+
+    .academy-collage-grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: 88px;
+    }
+
+    .collage-item-1 {
+        grid-column: 1 / span 6;
+        grid-row: 1 / span 4;
+    }
+
+    .collage-item-2 {
+        grid-column: 1 / span 3;
+        grid-row: 5 / span 3;
+    }
+
+    .collage-item-3 {
+        grid-column: 4 / span 3;
+        grid-row: 5 / span 3;
+    }
+
+    .collage-item-4 {
+        grid-column: 1 / span 3;
+        grid-row: 8 / span 3;
+    }
+
+    .collage-item-5 {
+        grid-column: 4 / span 3;
+        grid-row: 8 / span 3;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 575px) {
+    .academy-collage-section {
+        padding: 60px 0;
+    }
+
+    .academy-collage-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
+
+    .academy-collage-item,
+    .collage-item-1,
+    .collage-item-2,
+    .collage-item-3,
+    .collage-item-4,
+    .collage-item-5 {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        transform: none;
+    }
+}
