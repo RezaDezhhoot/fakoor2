@@ -71,6 +71,9 @@ class SingleCourse extends BaseComponent
     public function mount($slug)
     {
         $this->course = $this->courseRepository->get('slug',$slug,false);
+        if ($this->course->redirect && !empty($this->course->redirect_url)) {
+            return redirect()->away($this->course->redirect_url, 302);
+        }
 //        if ($this->course->status == CourseEnum::DRAFT) {
 //            abort(301);
 //        }

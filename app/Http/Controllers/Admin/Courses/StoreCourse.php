@@ -24,6 +24,8 @@ class StoreCourse extends BaseComponent
     public  $course , $sub_title , $storage , $type , $organizations = [] , $executives = [] , $standard_code , $has_organization_certificate = false;
 
     public $sellable = false;
+    public $redirect = false;
+    public $redirect_url;
 
     public $custom_hours;
 
@@ -71,6 +73,8 @@ class StoreCourse extends BaseComponent
             $this->level = $this->course->level;
             $this->type = $this->course->type;
             $this->sellable = $this->course->sellable;
+            $this->redirect = $this->course->redirect;
+            $this->redirect_url = $this->course->redirect_url;
             $this->custom_hours = $this->course->custom_hours;
             $this->standard_code = $this->course->standard_code;
             $this->has_organization_certificate = $this->course->has_organization_certificate;
@@ -116,13 +120,14 @@ class StoreCourse extends BaseComponent
         elseif ($this->mode == self::CREATE_MODE){
             $this->saveInDataBase($this->courseRepository->newCourseObject());
             $this->reset(['slug','sub_title','title','short_body','long_body','image','category','quiz','teacher','has_organization_certificate',
-                'status','sellable','custom_hours','level','standard_code','type','reduction_type','const_price','reduction_value','start_at','expire_at','tags','seo_keywords','seo_description']);
+                'status','sellable','redirect','redirect_url','custom_hours','level','standard_code','type','reduction_type','const_price','reduction_value','start_at','expire_at','tags','seo_keywords','seo_description']);
         }
     }
 
     public function saveInDataBase($model)
     {
         $this->quiz = $this->emptyToNull($this->quiz);
+        $this->redirect = (bool) $this->redirect;
         $this->start_at = $this->dateConverter($this->start_at,'m') ;
         $this->expire_at = $this->dateConverter($this->expire_at,'m') ;
         $this->validate([
@@ -148,7 +153,9 @@ class StoreCourse extends BaseComponent
             'type' => ['required','in:'.implode(',',array_keys(CourseEnum::getTypes()))],
             'has_organization_certificate' => ['required','boolean'],
             'custom_hours' => ['nullable','string','max:50'],
-            'sellable' => ['boolean']
+            'sellable' => ['boolean'],
+            'redirect' => ['boolean'],
+            'redirect_url' => [$this->redirect ? 'required' : 'nullable','url','max:2048'],
         ],[],[
             'slug' => 'نام متسعار',
             'title' => 'عنوان',
@@ -172,7 +179,9 @@ class StoreCourse extends BaseComponent
             'type' => 'نوع دوره',
             'has_organization_certificate' => 'گواهینامه فنی و حرفه ای',
             'custom_hours' => 'زمان آموزشی',
-            'sellable' => 'قابل خرید'
+            'sellable' => 'قابل خرید',
+            'redirect' => 'ریدایرکت 302',
+            'redirect_url' => 'آدرس ریدایرکت',
         ]);
         $model->slug = $this->slug;
         $model->title = $this->title;
@@ -190,6 +199,8 @@ class StoreCourse extends BaseComponent
         $model->level = $this->level;
         $model->type = $this->type;
         $model->sellable = $this->sellable;
+        $model->redirect = $this->redirect;
+        $model->redirect_url = $this->redirect ? $this->redirect_url : null;
         $model->start_at = $this->start_at;
         $model->expire_at = $this->expire_at;
         $model->seo_keywords = $this->seo_keywords;

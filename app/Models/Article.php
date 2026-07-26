@@ -34,6 +34,10 @@ class Article extends Model implements Sitemapable
 
     use HasFactory, Searchable;
 
+    protected $casts = [
+        'redirect' => 'boolean',
+    ];
+
     public function toSitemapTag(): Url | string | array
     {
         return Url::create(route('article', $this->slug))

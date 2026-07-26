@@ -28,6 +28,12 @@
             <hr>
 {{--            <x-admin.forms.select2 id="teacher" :data="$data['teacher']" label="مدرس*" wire:model.defer="teacher"/>--}}
             <x-admin.forms.checkbox value="1" id="sellable" label="قایل خرید" wire:model.defer="sellable" />
+            <div class="row">
+                <x-admin.forms.checkbox value="1" id="redirect" label="ریدایرکت 302" wire:model="redirect" />
+                @if($redirect)
+                    <x-admin.forms.input with="12" type="url" id="redirect_url" label="آدرس ریدایرکت*" wire:model.defer="redirect_url"/>
+                @endif
+            </div>
             <x-admin.forms.full-text-editor id="short_body" label="توضیحات کوتاه*" wire:model.defer="short_body"/>
             <x-admin.forms.full-text-editor id="long_body" label="توضیحات کامل*" wire:model.defer="long_body"/>
             <x-admin.forms.lfm-standalone id="image" label="تصویر*" :file="$image" type="image" required="true" wire:model="image"/>

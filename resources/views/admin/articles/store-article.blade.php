@@ -15,6 +15,12 @@
                 <x-admin.forms.dropdown with="6" id="type" :data="$data['type']" label="نوع*" wire:model.defer="type"/>
             </div>
             <hr>
+            <div class="row">
+                <x-admin.forms.checkbox value="1" id="redirect" label="ریدایرکت 302" wire:model="redirect" />
+                @if($redirect)
+                    <x-admin.forms.input with="12" type="url" id="redirect_url" label="آدرس ریدایرکت*" wire:model.defer="redirect_url"/>
+                @endif
+            </div>
             <x-admin.forms.lfm-standalone id="image" label="تصویر" :file="$image" type="image" required="true" wire:model="image"/>
             <x-admin.forms.full-text-editor id="body" label="محتوا*" wire:model.defer="body"/>
             <x-admin.forms.text-area label="کلمات کلیدی*" help="کلمات را با کاما از هم جدا کنید" wire:model.defer="seo_keywords" id="seo_keywords" />

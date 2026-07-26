@@ -15,6 +15,8 @@ class StoreArticle extends BaseComponent
 {
     public $header , $slug , $title , $body , $category , $status = '' , $image , $seo_keywords , $seo_description, $tags = [];
     public $article , $type , $file , $driver;
+    public $redirect = false;
+    public $redirect_url;
     public array $categories = [];
 
     public function __construct($id = null)
@@ -44,6 +46,8 @@ class StoreArticle extends BaseComponent
             $this->tags = $this->article->tags->pluck('id','id')->toArray();
             $this->file = $this->article->file;
             $this->driver = $this->article->driver;
+            $this->redirect = $this->article->redirect;
+            $this->redirect_url = $this->article->redirect_url;
         } elseif ($this->mode == self::CREATE_MODE) {
             $this->header = 'مقاله جدید';
         } else abort(404);
@@ -73,12 +77,13 @@ class StoreArticle extends BaseComponent
             $this->saveInDateBase($this->article);
         elseif ($this->mode == self::CREATE_MODE) {
             $this->saveInDateBase( $this->articleRepository->getNewObject());
-            $this->reset(['slug','title','category','image','body','seo_keywords','seo_description','status','type','file','driver']);
+            $this->reset(['slug','title','category','image','body','seo_keywords','seo_description','status','type','file','driver','redirect','redirect_url']);
         }
     }
 
     public function saveInDateBase($model)
     {
+        $this->redirect = (bool) $this->redirect;
         $fields = [
             'slug' => ['required','string','unique:articles,slug,'.($this->article->id ?? 0)],
             'title' => ['required','string','max:100'],
@@ -90,7 +95,9 @@ class StoreArticle extends BaseComponent
             'status' => ['required','in:'.implode(',',array_keys(ArticleEnum::getStatus()))],
             'type' => ['required','in:'.implode(',',array_keys(ArticleEnum::getType()))],
             'file' => ['nullable','max:9000'],
-            'driver' => ['nullable',Rule::in(getAvailableStorages())]
+            'driver' => ['nullable',Rule::in(getAvailableStorages())],
+            'redirect' => ['boolean'],
+            'redirect_url' => [$this->redirect ? 'required' : 'nullable','url','max:2048'],
         ];
         $messages = [
             'slug' => 'نام متسعار',
@@ -103,7 +110,9 @@ class StoreArticle extends BaseComponent
             'status' => 'وضعیت',
             'type' => 'نوع',
             'file' => 'فایل',
-            'driver' => 'فضای ذخیره سازی'
+            'driver' => 'فضای ذخیره سازی',
+            'redirect' => 'ریدایرکت 302',
+            'redirect_url' => 'آدرس ریدایرکت',
         ];
         $this->validate($fields,[],$messages);
         $model->slug = $this->slug;
@@ -117,6 +126,8 @@ class StoreArticle extends BaseComponent
         $model->type = $this->type;
         $model->file = $this->file;
         $model->driver = StorageEnum::PUBLIC;
+        $model->redirect = $this->redirect;
+        $model->redirect_url = $this->redirect ? $this->redirect_url : null;
         $model->user_id = auth()->id();
         $this->articleRepository->save($model);
         $this->tags = array_filter($this->tags);

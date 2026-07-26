@@ -50,6 +50,10 @@ class Course extends Model implements Sitemapable
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'redirect' => 'boolean',
+    ];
+
     public function toSitemapTag(): Url | string | array
     {
         return Url::create(route('course', $this->slug))

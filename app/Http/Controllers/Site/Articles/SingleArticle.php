@@ -53,6 +53,10 @@ class SingleArticle extends BaseComponent
 
         $this->article = $this->articleRepository->get([['slug',$slug]],false);
 
+        if ($this->article->redirect && !empty($this->article->redirect_url)) {
+            return redirect()->away($this->article->redirect_url, 302);
+        }
+
         if ($this->article->status != ArticleEnum::PUBLISHED) {
             abort(301);
         }
