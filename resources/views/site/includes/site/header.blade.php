@@ -93,11 +93,6 @@
 
                             <div class="nav-left-button mr-3">
                                 <ul class="generic-list-item">
-                                    <div class="cta-buttons">
-                                        <a href="{{ route('free-consultation') }}" class="cta-link btn-primary">
-                                            مشاوره رایگان
-                                        </a>
-                                    </div>
                                     @auth()
                                         <div class="shop-cart user-profile-cart">
                                             <ul>
