@@ -44,7 +44,7 @@
                             <i class="la la-eye"></i>
                             <span>مشاهده دوره‌ها</span>
                         </a>
-                        <a href="{{ $sliderUrl }}" class="ml-md-2 btn-custom justify-content-center border-primary text-primary radius-lg">
+                        <a href="{{ route('free-consultation') }}" class="ml-md-2 btn-custom justify-content-center border-primary text-primary radius-lg">
                             <i class="la la-comments"></i>
                             <span>مشاوره رایگان</span>
                         </a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Layouts;
 
 use App\Http\Controllers\BaseComponent;
+use App\Models\ConsultationRequest;
 use App\Repositories\Interfaces\CommentRepositoryInterface;
 use App\Repositories\Interfaces\ContactUsRepositoryInterface;
 use App\Repositories\Interfaces\SettingRepositoryInterface;
@@ -22,7 +23,8 @@ class Sidebar extends BaseComponent
             'tickets' => $ticketRepository::getNew(),
             'comments' => $commentRepository::getNew(),
             'users' => $userRepository::getNew(),
-            'contacts' => $contactUsRepository->get_new_items()
+            'contacts' => $contactUsRepository->get_new_items(),
+            'consultations' => ConsultationRequest::where('checked', false)->count(),
         ];
         return view('admin.layouts.sidebar',$data);
     }

@@ -130,6 +130,7 @@
                 @endcan
                 @can('show_contacts')
                     <x-admin.menu-item  href="{{route('admin.contact')}}" icon="flaticon-email" :active="request()->routeIs(['admin.contact','admin.store.contact'])" label=" ارتباط با ما ({{$contacts}})" />
+                    <x-admin.menu-item  href="{{route('admin.consultation')}}" icon="flaticon2-phone" :active="request()->routeIs(['admin.consultation','admin.store.consultation'])" label="درخواست های مشاوره ({{$consultations}})" />
                 @endcan
                 @can('show_surveys')
                     <x-admin.menu-item  href="{{route('admin.survey')}}" icon="fab fa-wpforms" :active="request()->routeIs(['admin.survey','admin.store.survey'])" label="فرم های نظر سنجی" />

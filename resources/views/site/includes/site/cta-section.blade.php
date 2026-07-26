@@ -11,7 +11,7 @@
                         <p class="cta__desc text-white-50 mb-4">مشاوره رایگان با کارشناسان ما؛ ما به شما کمک می‌کنیم بهترین مسیر یادگیری را انتخاب کنید.</p>
                         
                         <div class="cta-action d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-                            <a href="#" class="btn btn-light btn-cta rounded-pill px-4 py-2 fw-bold">
+                            <a href="{{ route('free-consultation') }}" class="btn btn-light btn-cta rounded-pill px-4 py-2 fw-bold">
                                 <i class="la la-phone-volume me-2"></i>
                                 درخواست مشاوره رایگان
                             </a>

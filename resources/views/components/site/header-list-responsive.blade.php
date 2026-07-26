@@ -29,6 +29,9 @@
         <li>
             <a href="{{route('contact')}}">ارتباط با ما </a>
         </li>
+        <li>
+            <a href="{{ route('free-consultation') }}">مشاوره رایگان </a>
+        </li>
     </ul>
     @auth()
         <strong class="off-canvas-menu-heading text-right pt-4">پنل کاربری</strong>

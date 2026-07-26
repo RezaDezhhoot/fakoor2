@@ -25,6 +25,7 @@ Route::get('/articles/{type}', App\Http\Controllers\Site\Articles\IndexArticle::
 Route::get('/article/{type}/{slug}', App\Http\Controllers\Site\Articles\SingleArticle::class)->name('article');
 
 Route::get('/contact-us', App\Http\Controllers\Site\Settings\Contact::class)->name('contact');
+Route::get('/free-consultation', App\Http\Controllers\Site\Consultations\FreeConsultation::class)->name('free-consultation');
 Route::get('/about-us', App\Http\Controllers\Site\Settings\About::class)->name('about');
 Route::get('/fag', App\Http\Controllers\Site\Settings\Fag::class)->name('fag');
 Route::get('/cart', App\Http\Controllers\Site\Carts\Cart::class)->name('cart');
@@ -104,6 +105,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/users/{action}/{id?}', App\Http\Controllers\Admin\Users\StoreUser::class)->name('admin.store.user');
     Route::get('/contact-us', App\Http\Controllers\Admin\Contacts\IndexContactUs::class)->name('admin.contact');
     Route::get('/contact-us/{action?}/{id?}', App\Http\Controllers\Admin\Contacts\StoreContactUs::class)->name('admin.store.contact');
+    Route::get('/consultations', App\Http\Controllers\Admin\Consultations\IndexConsultation::class)->name('admin.consultation');
+    Route::get('/consultations/{action}/{id?}', App\Http\Controllers\Admin\Consultations\StoreConsultation::class)->name('admin.store.consultation');
     Route::get('/settings/base', App\Http\Controllers\Admin\Settings\BaseSetting::class)->name('admin.setting.base');
     Route::get('/settings/home', App\Http\Controllers\Admin\Settings\HomeSetting::class)->name('admin.setting.home');
     Route::get('/settings/sms', App\Http\Controllers\Admin\Settings\SmsSetting::class)->name('admin.setting.sms');

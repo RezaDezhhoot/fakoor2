@@ -76,6 +76,7 @@ class SiteMapGeneration implements ShouldQueue
                 $sitemap->add(route('about'));
                 $sitemap->add(route('fag'));
                 $sitemap->add(route('auth'));
+                $sitemap->add(route('free-consultation'));
             }
             if (isset($this->method['pages'])) {
                 $sitemap->add($this->method['pages']);

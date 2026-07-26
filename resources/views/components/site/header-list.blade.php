@@ -6,6 +6,11 @@
                 تماس با ما
             </a>
         </li>
+        <li>
+            <a href="{{ route('free-consultation') }}" class="cta-link cta-link--ghost">
+                مشاوره رایگان
+            </a>
+        </li>
 
         <li>
             <a href="{{route('courses')}}" class="cta-link cta-link--ghost">دوره های آموزشی </a>
