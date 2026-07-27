@@ -95,7 +95,7 @@
                                 <ul class="generic-list-item d-flex align-items-center">
                                     <li>
                                         <div class="cta-buttons">
-                                            <a href="{{ route('free-consultation') }}" class="cta-link btn-primary">
+                                            <a href="{{ route('free-consultation') }}" class="cta-link btn-primary text-white">
                                                 مشاوره رایگان
                                             </a>
                                         </div>
