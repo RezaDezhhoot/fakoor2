@@ -92,20 +92,30 @@
                             </div>
 
                             <div class="nav-left-button mr-3">
-                                <ul class="generic-list-item">
-                                    @auth()
-                                        <div class="shop-cart user-profile-cart">
-                                            <ul>
-                                                <x-site.client.desktop-right-menu />
-                                            </ul>
+                                <ul class="generic-list-item d-flex align-items-center">
+                                    <li>
+                                        <div class="cta-buttons">
+                                            <a href="{{ route('free-consultation') }}" class="cta-link btn-primary">
+                                                مشاوره رایگان
+                                            </a>
                                         </div>
+                                    </li>
+                                    @auth()
+                                        <li>
+                                            <div class="shop-cart user-profile-cart">
+                                                <ul>
+                                                    <x-site.client.desktop-right-menu />
+                                                </ul>
+                                            </div>
+                                        </li>
                                     @else
-                                    <div class="cta-buttons">
-                            <a href="{{ route('auth') }}" class="cta-link cta-link--ghost">
-                                ورود | ثبت نام
-                            </a>
-                                    </div>
-                                        
+                                        <li>
+                                            <div class="cta-buttons">
+                                                <a href="{{ route('auth') }}" class="cta-link cta-link--ghost">
+                                                    ورود | ثبت نام
+                                                </a>
+                                            </div>
+                                        </li>
                                     @endif
                                 </ul>
                             </div>
