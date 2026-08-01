@@ -75,22 +75,38 @@ class SendRepository implements SendRepositoryInterface
     {
         try {
             $client = new Client();
-            $query = Arr::query([
-                'username' => $this->username,
-                'password' => $this->password,
-                'from' => $this->lineNumber,
-                'to' => $phone,
-                'pattern_code' => $this->pattern,
-                'input_data' => json_encode([
-                    $this->pattern_var => $code
-                ]),
+//            $query = Arr::query([
+//                'username' => $this->username,
+//                'password' => $this->password,
+//                'from' => $this->lineNumber,
+//                'to' => $phone,
+//                'pattern_code' => $this->pattern,
+//                'input_data' => json_encode([
+//                    $this->pattern_var => $code
+//                ]),
+//            ]);
+            $result = $client->post("https://api.iranpayamak.com/ws/v1/sms/pattern", [
+                'from_body' => [
+                    'code' => env('FARAZ_OTP_CODE'),
+                    'attributes' => [
+                        '%code%' => $code
+                    ],
+                    'recipient' => $phone,
+                    'line_number' => '50002178584000',
+                    'number_format' => 'english'
+                ],
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                    'Api-Key' => env('FARAZ_API_KEY')
+                ]
             ]);
-            $result = $client->post("https://ippanel.com/patterns/pattern"."?$query");
-            $data =  json_decode($result->getBody(), true);
-            if ($data['code'] != 0) {
-                Log::info($data['message']);
-                throw new Exception($data['message']);
+            $data = json_decode($result->getBody(), true);
+            if ($result->getStatusCode() != 201) {
+                Log::info($result->getBody());
+                throw new Exception($result->getBody());
             }
+            return $data;
         } catch (GuzzleException|Exception  $e) {
             return "ERROR";
         }
